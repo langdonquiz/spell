@@ -367,7 +367,7 @@ function showQuiz() {
 
 function checkAnswer() {
   const inputField = document.getElementById('userInput');
-  const input = inputField.value.trim().toLowerCase();
+  const input = inputField.value.trim().toLowerCase().replace(/’/g, "'");
   const correct = quizWords[currentIndex].word.toLowerCase();
   const messageDiv = document.getElementById('message');
 
