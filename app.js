@@ -367,7 +367,10 @@ function showQuiz() {
 
 function checkAnswer() {
   const inputField = document.getElementById('userInput');
-  const input = inputField.value.trim().toLowerCase().replace(/’/g, "'");
+  // Improved normalization and apostrophe handling
+  const input = inputField.value.trim().toLowerCase()
+    .normalize("NFKD")
+    .replace(/[’‘‛ʻ´`]/g, "'");  // Normalize all types of apostrophes
   const correct = quizWords[currentIndex].word.toLowerCase();
   const messageDiv = document.getElementById('message');
 
@@ -404,4 +407,3 @@ function checkAnswer() {
 }
 
 goHome();
-
